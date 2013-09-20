@@ -8,6 +8,7 @@
 #define EMAC_mod_H_
 #include "Arduino.h"
 #include "variant.h"
+#include "SamNonDuePin.h"
 #include "conf_eth.h"
 #include <mini_ip.h>
 #include <ethernet_phy.h>

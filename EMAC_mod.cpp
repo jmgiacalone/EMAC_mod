@@ -20,6 +20,7 @@ void printf(char *fmt, ... ){
 
 void setup()
 {
+	ethPinsInit();
   // start serial port at 9600 bps:
   SerialUSB.begin(115200);
   while (!SerialUSB.available());
@@ -195,6 +196,7 @@ static void emac_process_ip_packet(uint8_t *p_uc_data, uint32_t ul_size)
 			p_eth->et_src[0], p_eth->et_src[1], p_eth->et_src[2],
 			p_eth->et_src[3]);
 	SerialUSB.println("\r\n");
+
 	switch (p_ip_header->ip_p) {
 	case IP_PROT_ICMP:
 		if (p_icmp_echo->type == ICMP_ECHO_REQUEST) {
@@ -232,7 +234,6 @@ static void emac_process_ip_packet(uint8_t *p_uc_data, uint32_t ul_size)
 			}
 		}
 		break;
-
 	default:
 		break;
 	}
@@ -252,6 +253,8 @@ static void emac_process_eth_packet(uint8_t *p_uc_data, uint32_t ul_size)
 	p_ip_header_t p_ip_header = (p_ip_header_t) (p_uc_data + ETH_HEADER_SIZE);
 	ip_header_t ip_header;
 	us_pkt_format = SWAP16(p_eth->et_protlen);
+
+	printf("Packet format - %d\r\n", us_pkt_format);
 
 	switch (us_pkt_format) {
 	// ARP Packet format

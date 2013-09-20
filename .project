@@ -32,6 +32,11 @@
 			<locationURI>ArduinoPivateLibPath/EMAC</locationURI>
 		</link>
 		<link>
+			<name>Libraries/SamNonDuePin</name>
+			<type>2</type>
+			<locationURI>ArduinoPivateLibPath/SamNonDuePin</locationURI>
+		</link>
+		<link>
 			<name>arduino/core</name>
 			<type>2</type>
 			<locationURI>ArduinoPlatformPath/cores/arduino</locationURI>
